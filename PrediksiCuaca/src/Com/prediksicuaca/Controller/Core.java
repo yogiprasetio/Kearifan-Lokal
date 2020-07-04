@@ -7,6 +7,8 @@ import java.math.MathContext;
 public class Core {
    // Math math = new Math;
     Controller control;
+    private static int sbtAwalCerah=0,sbtAkhirCerah=0,PurnamaCerah=0,BaruCerah=0,sbtAwalHujan=0,sbtAkhirHujan=0,PurnamaHujan=0,baruHujan=0,sbtAwalBln=0,sbtAkhirBln=0,PurnamaBln=0,baruBln=0,sbtAwalBlntdk=0,sbtAkhirBlntdk=0,PurnamaBlntdk=0,baruBlntdk=0;
+    private static int sbtAwalHujany,sbtAkhirHujany,PurnamaHujany,BaruHujany,sbtAwalHujanx,sbtAkhirHujanx,PurnamaHujanx,baruHujanx,sbtAwalblny,sbtAkhirblny,Purnamablny,barublny,sbtAwalBlntdkx,sbtAkhirBlntdkx,PurnamaBlntdkx,baruBlntdkX;
     private static double Stinggi,Srendah,Stinggiawn,Srendahawn,Stinggicrh,Srendahcrh;
     private static double sumSuhutertinggi[], sumSuhuterendah[],sumSuhuTertinggiCerah[],sumSuhuTerendahCerah[],sumSuhuterendahAwan[],sumSuhutertinggiAwan[];
     private static double avgSuhutertinggi=0,avgSuhuterendah=0,avgsuhuTertinggiCerah=0, avgSuhuterendahCerah=0, avgSuhutertinggiAwan=0,avgSUhuterendahAwan=0;
@@ -15,14 +17,34 @@ public class Core {
     private static double sumxitinggi=0,sumxirendah=0,sumxitinggiHjn=0,sumxirendahhjn=0,sumxitinggicrh=0,sumxirendahcrh=0;
     private static double sumxitinggin,sumxirendahn,sumxitinggiHjnn,sumxirendahhjnn,sumxitinggicrhn,sumxirendahcrhn;
     private static int i,j=0,k=0,l=0,m=0,n=0,o=0;
+    public static String Konndisi;
+    
     public Core() {
-    
+        sum();
+        avg();
+        xi();
+        KondisiBln();
+        Cuacaa();
     }
-    
-    public static void StdDeviasiC1(){
-        int n = Controller.arrData.size();
-        
-        
+    public static String Kondisi(double tempTinggi,double tempRendah,String Bulan){
+//        int n = Controller.arrData.size();
+        hasilC1RendahAwan(tempRendah);
+        hasilC1RendahCerah(tempRendah);
+        hasilC1TinggiAwan(tempTinggi);
+        hasilC1TinggiCerah(tempTinggi);
+        hasilC1Tinggihjn(tempTinggi);
+        hasilC1rendahhjn(tempRendah);
+        likehood(Bulan);
+        if(Hujan>Cerah && Hujan>Awan){
+            Konndisi = "Hujan";
+        }
+        else if(Cerah>Hujan && Cerah>Awan){
+            Konndisi = "Cerah";
+        }
+        else if(Awan>Hujan && Awan>Cerah){
+            Konndisi = "Berawan";
+        }
+        return Konndisi;
     }
     
     public static void sum(){
@@ -31,6 +53,7 @@ public class Core {
                 sumSuhutertinggi[j]= Controller.arrData.get(i).getSuhuTertinggi();
                 sumSuhuterendah[j]=Controller.arrData.get(i).getSuhuTerendah();
                 j++;
+                System.out.println(j+" _ "+sumSuhuterendah[j]);
             }
             else if("cerah".equals(Controller.arrData.get(i).getCuaca())){
                 sumSuhuTerendahCerah[k]= Controller.arrData.get(i).getSuhuTerendah();
@@ -44,8 +67,11 @@ public class Core {
             }
         }
     }
+    
     public static void avg() {
+        System.out.println(sumSuhuterendah.length);
      for(i=0;i<sumSuhuterendah.length;i++){
+         System.out.println(j+" _ "+sumSuhuterendah[i]);
          avgSuhuterendah = avgSuhuterendah+sumSuhuterendah[i];
      }
      avgSuhuterendahn = avgSuhuterendah/sumSuhuterendah.length;
@@ -120,5 +146,171 @@ public class Core {
         }
         sumxitinggiHjnn=sumxitinggiHjn;
         Stinggiawn = Math.sqrt(sumxitinggiHjnn/(sumSuhutertinggiAwan.length-1));
+    }
+    private static int sbtAwalblnAwan,sbtAwalblnAwann=0,PurnamablnAwan,PurnamablnAwann=0,SbtblnAwan,SbtblnAwann=0,Newbln,Newblnn=0; 
+    public static void KondisiBln(){
+        for(i=0;i<Controller.arrData.size();i++){
+            if("sabit awal".equals(Controller.arrData.get(i).getKondisi_Bulan())){
+                sbtAwalblny = sbtAwalBln+1;
+                System.out.println(sbtAwalblny);
+                if("hujan".equals(Controller.arrData.get(i).getCuaca())){
+                    sbtAwalHujany = sbtAwalHujan + 1;
+                    
+                }
+                else if("berawan".equals(Controller.arrData.get(i).getCuaca())){
+                    sbtAwalblnAwan = sbtAwalblnAwann+1;
+                }
+                else{
+                    sbtAwalBlntdkx = sbtAwalBlntdk+1;
+                }
+            }
+            else if("purnama".equals(Controller.arrData.get(i).getKondisi_Bulan())){
+                
+                    Purnamablny = PurnamaBln+1;
+                if("hujan".equals(Controller.arrData.get(i).getCuaca())){
+                    PurnamaHujany = PurnamaHujan + 1;
+                }
+                else if("berawan".equals(Controller.arrData.get(i).getCuaca())){
+                    PurnamablnAwan = PurnamablnAwann+1;
+                }
+                else{
+                    PurnamaHujanx = PurnamaBlntdk+1;
+                    
+                }
+            }
+            else if("sabit akhir".equals(Controller.arrData.get(i).getKondisi_Bulan())){
+                
+                    sbtAkhirblny = sbtAkhirBln+1;
+                if("hujan".equals(Controller.arrData.get(i).getCuaca())){
+                    sbtAkhirHujany = sbtAkhirHujan+1;
+                }
+                else if("berawan".equals(Controller.arrData.get(i).getCuaca())){
+                    SbtblnAwan = SbtblnAwann+1;
+                }
+                else{
+                    sbtAkhirHujanx = sbtAkhirCerah +1;
+                }
+            }
+            else{
+                barublny = baruBln+1;
+                if("hujan".equals(Controller.arrData.get(i).getCuaca())){
+                    BaruHujany = baruHujan+1;
+                }
+                else if("berawan".equals(Controller.arrData.get(i).getCuaca())){
+                    Newbln = Newblnn+1;
+                }
+                else{
+                    baruHujanx =BaruCerah +1;
+                }
+            }
+        }
+    }
+    
+    private static int kondisiFinalhjn,kondisi = 0,kondisiFinalcerah,kondisicrh = 0,kondisiFinalBerawan,kondisiAwan = 0;
+    private static double sikon, sikonX,sikonY;
+    public static void Cuacaa(){
+        for(i=0;i<Controller.arrData.size();i++){
+            if("hujan".equals(Controller.arrData.get(i).getCuaca())){
+                kondisiFinalhjn = kondisi + 1; 
+            }
+            else if("Berawan".equals(Controller.arrData.get(i).getCuaca())){
+                kondisiFinalBerawan = kondisiAwan +1;
+            }
+            else {
+                kondisiFinalcerah = kondisicrh + 1;
+            }
+            
+        }
+        sikon = kondisiFinalhjn/Controller.arrData.size();
+        sikonX = kondisiFinalcerah/Controller.arrData.size();
+        sikonY = kondisiFinalBerawan/Controller.arrData.size();
+    }
+    public static double hasil,hasil2,hasil3,hasil4,hasil5,hasil6,hasil7,hasil8,hasil9,hasil10;
+    public static void hasilC1Tinggihjn(double tempTinggi){
+        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+        temp2 = Math.pow(-( tempTinggi- avgSuhutertinggin),2);
+        temp1= Math.pow((2*Stinggi), 2);
+        temp3 = Math.pow(2.7183, (temp2/temp1));
+        temp4 = 1/(Math.sqrt((2*3.14*Stinggi)));
+        hasil = temp4*temp3;
+    }
+    public static void hasilC1rendahhjn(double tempRendah){
+        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+        temp2 = Math.pow(-( tempRendah- avgSuhuterendahn),2);
+        temp1= Math.pow((2*Srendah), 2);
+        temp3 = Math.pow(2.7183, (temp2/temp1));
+        temp4 = 1/(Math.sqrt((2*3.14*Srendah)));
+        hasil2 = temp4*temp3;
+    }
+    
+    public static void hasilC1TinggiCerah(double tempTinggi){
+        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+        temp2 = Math.pow(-( tempTinggi- avgsuhuTertinggiCerahn),2);
+        temp1= Math.pow((2*Stinggicrh), 2);
+        temp3 = Math.pow(2.7183, (temp2/temp1));
+        temp4 = 1/(Math.sqrt((2*3.14*Stinggicrh)));
+        hasil3 = temp4*temp3;
+    }
+    
+    public static void hasilC1RendahCerah(double tempRendah){
+        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+        temp2 = Math.pow(-( tempRendah - avgSuhuterendahCerahn),2);
+        temp1= Math.pow((2*Srendahcrh), 2);
+        temp3 = Math.pow(2.7183, (temp2/temp1));
+        temp4 = 1/(Math.sqrt((2*3.14*Srendahcrh)));
+        hasil4 = temp4*temp3;
+    }
+    
+    public static void hasilC1TinggiAwan(double tempTinggi){
+        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+        temp2 = Math.pow(-( tempTinggi - avgSuhutertinggiAwann),2);
+        temp1= Math.pow((2*Stinggiawn), 2);
+        temp3 = Math.pow(2.7183, (temp2/temp1));
+        temp4 = 1/(Math.sqrt((2*3.14*Stinggiawn)));
+        hasil5 = temp4*temp3;
+    }
+    
+    public static void hasilC1RendahAwan(double tempRendah){
+        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+        temp2 = Math.pow(-( tempRendah - avgSUhuterendahAwann),2);
+        temp1= Math.pow((2*Srendahawn), 2);
+        temp3 = Math.pow(2.7183, (temp2/temp1));
+        temp4 = 1/(Math.sqrt((2*3.14*Srendahawn)));
+        hasil6 = temp4*temp3;
+    }
+    
+//    public static void hasilC1sbtAwalhjn(){
+//        double temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
+//        temp2 = Math.pow(-( tempRendah - avgSUhuterendahAwann),2);
+//        temp1= Math.pow((2*Srendahawn), 2);
+//        temp3 = Math.pow(2.7183, (temp2/temp1));
+//        temp4 = 1/(Math.sqrt((2*3.14*Srendahawn)));
+//        hasil6 = temp4*temp3;
+//    }
+    
+    public static double Hujan,Cerah,Awan;
+    public static void likehood(String Bulan){
+        if("sabit awal".equals(Bulan)){
+            System.out.println(sbtAwalHujany +" - "+sbtAwalblny);
+            Hujan = hasil*hasil2*(sbtAwalHujany/sbtAwalblny)*sikon;
+            Cerah = hasil3*hasil4*(sbtAwalBlntdkx/sbtAwalblny)*sikonX;
+            Awan = hasil5*hasil6*(sbtAwalblnAwan/sbtAwalblny)*sikonY;
+        }
+        else if("purnama".equals(Bulan)){
+            Hujan = hasil*hasil2*(PurnamaHujany/Purnamablny)*sikon;
+            Cerah = hasil3*hasil4*(PurnamaHujanx/Purnamablny)*sikonX;
+            Awan = hasil5*hasil6*(PurnamablnAwan/Purnamablny)*sikonY;
+        }
+        else if("sabit akhir".equals(Bulan)){
+            Hujan = hasil*hasil2*(sbtAkhirHujany/sbtAkhirblny)*sikon;
+            Cerah = hasil3*hasil4*(sbtAkhirHujanx/sbtAkhirblny)*sikonX;
+            Awan = hasil5*hasil6*(SbtblnAwan/sbtAkhirblny)*sikonY;
+        }
+        else{
+             Hujan = hasil*hasil2*(BaruHujany/barublny)*sikon;
+            Cerah = hasil3*hasil4*(baruHujanx/barublny)*sikonX;
+            Awan = hasil5*hasil6*(Newbln/barublny)*sikonY;
+        }
+        
     }
 }

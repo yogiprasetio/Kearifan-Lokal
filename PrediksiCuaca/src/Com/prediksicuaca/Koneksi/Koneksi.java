@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class Koneksi {
     private Connection connect;
     private Statement db;
-    private String database = "yogi_06926";
+    private String database = "AIwithJava";
     
     public Koneksi(){
 //        System.out.println("aku nang kelas koneksi saiki...");
@@ -18,7 +18,7 @@ public class Koneksi {
             System.out.println("Class Driver Ditemukan");
             
             try{
-                connect = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","yogi_06926"/*username*/, "yogi06926"/*pass*/);
+                connect = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","AIwithJava"/*username*/, "yogi06926"/*pass*/);
                 System.out.println("Koneksi Datatbase sukses");
             } catch (SQLException se){
                 System.out.println("Koneksi Database gagal = " + se);

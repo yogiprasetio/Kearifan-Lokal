@@ -5,6 +5,10 @@
  */
 package Com.prediksicuaca.Main;
 
+import Com.prediksicuaca.Controller.Controller;
+import Com.prediksicuaca.View.MainView;
+import java.sql.SQLException;
+
 /**
  *
  * @author DFA-Agent02
@@ -14,8 +18,9 @@ public class PrediksiCuaca {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws SQLException {
+        //new MainView().show();
+        Controller control = new Controller();
     }
     
 }

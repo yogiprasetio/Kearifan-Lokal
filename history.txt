@@ -1,0 +1,35 @@
+sbtAwalCerah=0  0,03070667126   -0,135764303  2,7183
+0,3690481048	0,8730475908
+
+sbtAkhirCerah=0
+
+PurnamaCerah=0
+
+BaruCerah=0
+
+sbtAwalHujan=0
+
+sbtAkhirHujan=0
+
+PurnamaHujan=0
+
+baruHujan=0
+
+sbtAwalBln=0
+
+sbtAkhirBln=0
+
+PurnamaBln=0
+
+baruBln=0
+
+sbtAwalBlntdk=0
+
+sbtAkhirBlntdk=0
+
+PurnamaBlntdk=0
+
+baruBlntdk=0;
+
+sbtAwalHujany,sbtAkhirHujany,PurnamaHujany,BaruHujany,sbtAwalHujanx,sbtAkhirHujanx,PurnamaHujanx,baruHujanx,sbtAwalblny,sbtAkhirblny,Purnamablny,barublny,sbtAwalBlntdkx,sbtAkhirBlntdkx,PurnamaBlntdkx,baruBlntdkX;
+    
