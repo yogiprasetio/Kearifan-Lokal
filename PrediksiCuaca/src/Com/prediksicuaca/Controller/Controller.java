@@ -24,10 +24,11 @@ public class Controller {
 
     public ArrayList<DataSet> getDataSet() throws SQLException{
         System.out.println("GetDataSet");
-        this.arrData.clear();
-        ResultSet rs = this.conn.GetData("SELECT * FROM data_cuaca ");
+        //this.arrData.clear();
+        ResultSet rs = this.conn.GetData("SELECT * FROM DATA_CUACA");
         while (rs.next()){
             String hari = rs.getString("hari");
+            System.out.println(hari);
             String tanggal = rs.getString("tanggal");
             String Cuaca = rs.getString("Cuaca");
             String Kondisi_Bulan = rs.getString("Kondisi_Bulan");
@@ -36,6 +37,7 @@ public class Controller {
             System.out.println(suhuTertinggi);
             double suhhuTerendah = rs.getDouble("suhhuTerendah");
             DataSet dts = new DataSet(Kondisi_Bulan, suhuTertinggi, suhhuTerendah, hari, tanggal,Cuaca);
+            System.out.println("klop");
             this.arrData.add(dts);
         }
         return this.arrData;

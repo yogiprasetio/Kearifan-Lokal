@@ -156,6 +156,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHasilActionPerformed
         double suhuTinggi = Double.parseDouble(this.tfSuhuTinggi.getText());
+        System.out.println(Controller.arrData.size());
         double suhuRendah = Double.parseDouble(this.tfSuhuRendah.getText());
         String KondisiBln = this.cbKondisiBln.getSelectedItem().toString().toLowerCase();
         String Final = Core.Kondisi(suhuTinggi, suhuRendah, KondisiBln);

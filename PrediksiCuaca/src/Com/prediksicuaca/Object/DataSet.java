@@ -3,8 +3,8 @@ package Com.prediksicuaca.Object;
 import Com.prediksicuaca.Object.Waktu;
 
 public class DataSet {
-    private String Kondisi_Bulan,Cuaca;
-    private double SuhuTertinggi,SuhuTerendah;
+    private static String Kondisi_Bulan,Cuaca;
+    private static double SuhuTertinggi,SuhuTerendah;
     Waktu waktu;
     public DataSet(String Kondisi_Bulan,double SuhuTertinggi,double SuhuTerendah,String hari,String tanggal,String Cuaca) {
         setKondisi_Bulan(Kondisi_Bulan);

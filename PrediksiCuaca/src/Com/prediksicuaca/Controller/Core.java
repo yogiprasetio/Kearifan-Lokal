@@ -20,7 +20,9 @@ public class Core {
     public static String Konndisi;
     
     public Core() {
+        System.out.println(Controller.arrData.get(k).getSuhuTerendah());
         sum();
+        System.out.println("masuk avg");
         avg();
         xi();
         KondisiBln();
@@ -49,20 +51,27 @@ public class Core {
     
     public static void sum(){
         for(i=0;i<Controller.arrData.size();i++){
+//            System.out.println("sum 1");
             if("hujan".equals(Controller.arrData.get(i).getCuaca())){
+                System.out.println(Controller.arrData.get(i).getCuaca());
                 sumSuhutertinggi[j]= Controller.arrData.get(i).getSuhuTertinggi();
                 sumSuhuterendah[j]=Controller.arrData.get(i).getSuhuTerendah();
                 j++;
                 System.out.println(j+" _ "+sumSuhuterendah[j]);
             }
             else if("cerah".equals(Controller.arrData.get(i).getCuaca())){
+                System.out.println(Controller.arrData.get(i).getCuaca());
                 sumSuhuTerendahCerah[k]= Controller.arrData.get(i).getSuhuTerendah();
                 sumSuhuTertinggiCerah[k]= Controller.arrData.get(i).getSuhuTertinggi();
                 k++;
             }
-            else/*point keraguan*/{
+            else if ("berawan".equals(Controller.arrData.get(i).getCuaca())){
+                System.out.println(Controller.arrData.get(i).getCuaca());
+                System.out.println(l+" "+i);
                 sumSuhuterendahAwan[l] = Controller.arrData.get(i).getSuhuTerendah();
+                System.out.println(sumSuhuterendahAwan[i]);
                 sumSuhutertinggiAwan[l]= Controller.arrData.get(i).getSuhuTertinggi();
+                System.out.println(sumSuhutertinggiAwan[i]);
                 l++;
             }
         }

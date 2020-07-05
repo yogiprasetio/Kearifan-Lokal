@@ -1,3 +1,58 @@
+create tablespace KearifanLokal
+	datafile 'D:\KearifanLokal\KearifanLokal.dbf'
+	size 30M;
+
+create user AIwithJava
+	identified by yogi06926
+	default tablespace KearifanLokal
+	quota 30M on KearifanLokal;
+
+grant all privileges to AIwithJava;
+conn AIwithJava;
+
+create table data_cuaca(
+	hari varchar2(10),
+    tanggal varchar2(20),
+    Cuaca varchar2(10),
+   	Kondisi_Bulan varchar2(15),
+    suhuTertinggi float(5),
+    suhhuTerendah float(5)
+);
+
+insert all
+	into data_cuaca values('rabu','1/01/2020','berawan','sabit awal',31,25)
+	into data_cuaca values('kamis','2/01/2020','berawan','sabit awal',31,25)
+	into data_cuaca values('jumat','3/01/2020','berawan','purnama',32,25)
+	into data_cuaca values('sabtu','4/01/2020','berawan','purnama',31,25)
+	into data_cuaca values('minggu','5/01/2020','berawan','sabit akhir',33,26)
+	into data_cuaca values('senin','6/01/2020','berawan','sabit awal',31,25)
+	into data_cuaca values('selasa','7/01/2020','berawan','sabit awal',31,25)
+	into data_cuaca values('rabu','8/01/2020','hujan','sabit awal',30,25)
+	into data_cuaca values('kamis','9/01/2020','berawan','sabit awal',31,25)
+	into data_cuaca values('jumat','10/01/2020','hujan','purnama',30,25)
+	into data_cuaca values('sabtu','11/01/2020','berawan','purnama',30,25)
+	into data_cuaca values('minggu','12/01/2020','berawan','purnama',31,25)
+	into data_cuaca values('senin','13/01/2020','berawan','sabit akhir',33,26)
+	into data_cuaca values('selasa','14/01/2020','berawan','sabit akhir',32,25)
+	into data_cuaca values('rabu','15/01/2020','berawan','sabit akhir',32,25)
+	into data_cuaca values('kamis','16/01/2020','berawan','sabit akhir',32,25)
+	into data_cuaca values('jumat','17/01/2020','berawan','sabit akhir',33,25)
+	into data_cuaca values('sabtu','18/01/2020','berawan','sabit akhir',33,26)
+	into data_cuaca values('minggu','19/01/2020','berawan','sabit akhir',33,25)
+	into data_cuaca values('senin','20/01/2020','berawan','sabit akhir',32,25)
+	into data_cuaca values('selasa','21/01/2020','berawan','sabit akhir',32,25)
+	into data_cuaca values('rabu','22/01/2020','berawan','sabit awal',32,25)
+	into data_cuaca values('kamis','23/01/2020','berawan','sabit akhir',31,26)
+	into data_cuaca values('jumat','24/01/2020','berawan','baru',32,26)
+	into data_cuaca values('sabtu','25/01/2020','berawan','baru',32,25)
+	into data_cuaca values('minggu','26/01/2020','berawan','sabit awal',32,25)
+	into data_cuaca values('senin','27/01/2020','berawan','sabit awal',31,26)
+	into data_cuaca values('selasa','28/01/2020','berawan','sabit awal',33,26)
+	into data_cuaca values('rabu','29/01/2020','berawan','sabit awal',33,26)
+	into data_cuaca values('kamis','30/01/2020','berawan','sabit awal',32,26)
+	into data_cuaca values('jumat','31/01/2020','berawan','sabit awal',31,25)
+	select 1 from dual;
+
 sbtAwalCerah=0  0,03070667126   -0,135764303  2,7183
 0,3690481048	0,8730475908
 
