@@ -32,7 +32,7 @@ public class Controller {
             String tanggal = rs.getString("tanggal");
             String Cuaca = rs.getString("Cuaca");
             String Kondisi_Bulan = rs.getString("Kondisi_Bulan");
-            System.out.println(Kondisi_Bulan);
+            System.out.println(Cuaca);
             double suhuTertinggi = rs.getDouble("suhuTertinggi");
             System.out.println(suhuTertinggi);
             double suhhuTerendah = rs.getDouble("suhhuTerendah");

@@ -159,7 +159,9 @@ public class MainView extends javax.swing.JFrame {
         System.out.println(Controller.arrData.size());
         double suhuRendah = Double.parseDouble(this.tfSuhuRendah.getText());
         String KondisiBln = this.cbKondisiBln.getSelectedItem().toString().toLowerCase();
-        String Final = Core.Kondisi(suhuTinggi, suhuRendah, KondisiBln);
+        Core.Kondisi(suhuTinggi, suhuRendah, KondisiBln);
+        String Final = Core.Konndisi;
+        System.out.println("Final : "+Final);
         String Hasil = ""+
                 "\t\t HASIL PREDIKSI CUACA HARI INI \n"+
                 "Dengan Suhu Maksimum\t\t: "+suhuTinggi+"\n"+
